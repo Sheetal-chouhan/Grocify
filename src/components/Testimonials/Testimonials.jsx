@@ -47,26 +47,27 @@ const Testimonials = () => {
                     modules={[Navigation]} className="mySwiper">
                     {review.map(item => {
                         return (
-                            <SwiperSlide className='flex bg-zinc-100 rounded-xl p-8'>
+                            <SwiperSlide key={item.id} className='flex bg-zinc-100 rounded-xl p-8'>
                                 <div className='flex gap-5 items-center'>
                                     <div className='w-16 h-16 rounded-full bg-red-500 outline-2 outline-orange-500 outline-offset-4 overflow-hidden'>
-                                        <img src={item.image} className='w-full h-full'/>
+                                        <img src={item.image} className='w-full h-full' />
                                     </div>
-                                   
+
                                     <div >
                                         <h5 className='text-xl font-bold'>{item.name}</h5>
                                         <p className='text-zinc-600'>{item.profession}</p>
                                         <span className='flex text-yellow-400 mt-3 text-xl gap-1'>{
-                                            Array.from({
-                                                length: item.rating
-                                            }, () => (<FaStar />))
-                                        }</span>
+                                            
+                                                Array.from({ length: Math.round(item.rating) }, (_, i) => (
+                                                    <FaStar key={i} />
+                                                ))
+                                            }</span>
                                     </div>
-                                    </div> 
+                                </div>
 
-                                    <div className='mt-10 min-h-[15vh]'>
-                                        <p className='text-zinc-600'>{item.para}</p>
-                                    </div>
+                                <div className='mt-10 min-h-[15vh]'>
+                                    <p className='text-zinc-600'>{item.para}</p>
+                                </div>
                                 {/* </div> */}
 
                             </SwiperSlide>
@@ -90,7 +91,7 @@ const review = [
         profession: "Food Blogger",
         rating: 4.0,
         para: "FreshBasket is my go-to store for all grocery needs. Their produce is always fresh, and the delivery is super fast. I love the user-friendly interface and variety of organic options!xz.",
-        image: Customer1 
+        image: Customer1
     },
     {
         id: 2,
@@ -98,7 +99,7 @@ const review = [
         profession: "Chef",
         rating: 4.8,
         para: "As a chef, quality ingredients are everything. FreshBasket consistently delivers the best vegetables, herbs, and pantry staples. Highly recommended!",
-        image: Customer2 
+        image: Customer2
     },
     {
         id: 3,
@@ -106,7 +107,7 @@ const review = [
         profession: "Model",
         rating: 3.8,
         para: "Shopping online with FreshBasket has saved me so much time. I trust them for my family's weekly groceries—always fresh, affordable, and reliable.",
-        image: Customer3 
+        image: Customer3
     },
     {
         id: 4,
@@ -114,7 +115,7 @@ const review = [
         profession: "Food Blogger",
         rating: 4.2,
         para: "I appreciate the selection of healthy foods and clean-label products. FreshBasket has been a great partner in my wellness journey!",
-        image:  Customer4 
+        image: Customer4
     },
     {
         id: 5,
@@ -122,7 +123,7 @@ const review = [
         profession: "Natcha Phongchai",
         rating: 5,
         para: "FreshBasket offers high-quality groceries at reasonable prices. Their organic section is impressive, and their customer service is top-notch.",
-        image: Customer5 
+        image: Customer5
     }
 ]
 
